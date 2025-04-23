@@ -18,3 +18,8 @@ variable "lambda_execution_role_arn" {
   description = "The ARN of the Lambda execution role"
   type        = string
 }
+
+variable "processed_bucket_name" {
+  description = "The name of the processed S3 bucket"
+  type        = string
+}
