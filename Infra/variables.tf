@@ -13,3 +13,8 @@ variable "processed_bucket_name" {
   description = "Name of the S3 bucket for processed images"
   type        = string
 }
+
+variable "lambda_function_name" {
+  description = "The name of the Lambda function"
+  type        = string
+}
