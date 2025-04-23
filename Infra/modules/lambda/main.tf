@@ -9,7 +9,7 @@ resource "aws_lambda_function" "image_processing" {
   environment {
     variables = {
       UPLOAD_BUCKET    = var.bucket_name
-      PROCESSED_BUCKET = module.s3_buckets.processed_bucket_name
+      PROCESSED_BUCKET = var.processed_bucket_name
     }
   }
 
