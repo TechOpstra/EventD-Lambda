@@ -23,7 +23,7 @@ resource "aws_lambda_permission" "allow_s3_invoke" {
   action        = "lambda:InvokeFunction"
   principal     = "s3.amazonaws.com"
   function_name = aws_lambda_function.image_processing.function_name
-  source_arn    = aws_s3_bucket.upload_bucket.arn
+  source_arn    = var.s3_bucket_arn  # Pass the S3 ARN from outside the module
 }
 
 
