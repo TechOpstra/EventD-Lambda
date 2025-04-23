@@ -39,7 +39,3 @@ data "aws_iam_policy_document" "lambda_policy" {
 output "lambda_execution_role_arn" {
   value = aws_iam_role.lambda_execution_role.arn
 }
-
-output "lambda_execution_role_arn" {
-  value = aws_iam_role.lambda_execution_role.arn
-}
