@@ -8,6 +8,8 @@ resource "aws_xray_sampling_rule" "lambda_sampling_rule" {
   host               = "localhost"  # Specify the host; usually "localhost" for Lambda
   url_path           = "/"  # URL path (you can change it based on your use case)
   version            = 1  # Version of the sampling rule
+  priority           = 1
+  fixed_rate         = 0.1 
 }
 
 
