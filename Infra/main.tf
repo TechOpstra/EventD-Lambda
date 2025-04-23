@@ -5,12 +5,12 @@ module "s3_buckets" {
 module "lambda_function" {
   source             = "./modules/lambda"
   bucket_name        = module.s3_buckets.upload_bucket_name
-  lambda_function_name = "ImageProcessingLambda"  # Define the Lambda function name here
+  lambda_function_name = "ImageProcessingLambda"  
 }
 
 module "iam_roles" {
-  source                = "./modules/iam"
-  lambda_role_policy_arn = module.lambda_function.lambda_role_arn
+  source             = "./modules/iam"
+  bucket_name        = module.s3_buckets.upload_bucket_name 
 }
 
 module "xray" {
