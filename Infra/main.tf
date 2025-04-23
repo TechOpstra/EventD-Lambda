@@ -8,6 +8,7 @@ module "lambda_function" {
   processed_bucket_name   = module.s3_buckets.processed_bucket_name  # Pass the processed bucket name
   lambda_function_name    = "ImageProcessingLambda"
   lambda_execution_role_arn = module.iam_roles.lambda_execution_role_arn  # Pass ARN here
+  s3_bucket_arn         = module.s3_buckets.upload_bucket_arn 
 }
 
 
