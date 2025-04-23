@@ -5,6 +5,7 @@ resource "aws_lambda_function" "image_processing" {
   role          = var.lambda_execution_role_arn 
   timeout       = 60
   filename      = "./function/lambda_function.zip"
+  source_code_hash = filebase64sha256("./function/lambda_function.zip")
 
   environment {
     variables = {
@@ -35,3 +36,6 @@ output "lambda_role_arn" {
   value = aws_lambda_function.image_processing.role
 }
 
+output "lambda_function_arn" {
+  value = aws_lambda_function.image_processing.arn
+}
