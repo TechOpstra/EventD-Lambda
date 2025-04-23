@@ -9,3 +9,5 @@ resource "aws_xray_sampling_rule" "lambda_sampling_rule" {
 output "xray_rule_arn" {
   value = aws_xray_sampling_rule.lambda_sampling_rule.arn
 }
+
+data "aws_caller_identity" "current" {}
