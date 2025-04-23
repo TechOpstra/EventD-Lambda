@@ -13,3 +13,8 @@ variable "region" {
   type        = string
   default     = "us-east-1"
 }
+
+variable "lambda_execution_role_arn" {
+  description = "The ARN of the Lambda execution role"
+  type        = string
+}
