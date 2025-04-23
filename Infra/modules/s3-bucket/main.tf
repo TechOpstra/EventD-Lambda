@@ -11,6 +11,19 @@ resource "aws_s3_bucket" "processed_bucket" {
   bucket = "processed-image-bucket-${random_id.bucket_suffix.hex}"
 }
 
+resource "aws_s3_bucket_notification" "upload_bucket_notification" {
+  bucket = aws_s3_bucket.upload_bucket.id
+
+  lambda_function {
+    events = ["s3:ObjectCreated:*"]
+    filter {
+      prefix = "uploads/"
+      suffix = ".jpg"
+    }
+
+    lambda_function_arn = module.lambda_function.lambda_function_arn
+  }
+}
 
 output "upload_bucket_name" {
   value = aws_s3_bucket.upload_bucket.bucket
