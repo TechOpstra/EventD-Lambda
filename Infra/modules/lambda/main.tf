@@ -2,7 +2,7 @@ resource "aws_lambda_function" "image_processing" {
   function_name = "ImageProcessingLambda"
   handler       = "index.lambda_handler"
   runtime       = "python3.8"
-  role          = module.iam_roles.lambda_execution_role_arn
+  role          = var.lambda_execution_role_arn 
   timeout       = 60
   filename      = "./function/lambda_function.zip"
 
