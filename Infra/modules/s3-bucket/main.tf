@@ -15,13 +15,10 @@ resource "aws_s3_bucket_notification" "upload_bucket_notification" {
   bucket = aws_s3_bucket.upload_bucket.id
 
   lambda_function {
-    events = ["s3:ObjectCreated:*"]
-    filter {
-      prefix = "uploads/"
-      suffix = ".jpg"
-    }
-
-    lambda_function_arn = var.lambda_function_arn 
+    events             = ["s3:ObjectCreated:*"]
+    filter_prefix      = "uploads/"
+    filter_suffix      = ".jpg"
+    lambda_function_arn = var.lambda_function_arn  # This is the ARN of the Lambda function passed to the module
   }
 }
 
