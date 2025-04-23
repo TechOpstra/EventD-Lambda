@@ -11,7 +11,8 @@ module "lambda_function" {
 
 module "iam_roles" {
   source             = "./modules/iam"
-  bucket_name        = module.s3_buckets.upload_bucket_name  # Pass bucket_name to IAM module
+  upload_bucket_name = module.s3_buckets.upload_bucket_name  # Pass the upload bucket name
+  processed_bucket_name = module.s3_buckets.processed_bucket_name  # Pass the processed bucket name
 }
 
 module "xray" {
