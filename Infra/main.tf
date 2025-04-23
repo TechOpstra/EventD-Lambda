@@ -1,6 +1,6 @@
 
 module "s3_buckets" {
-  source = "./modules/s3"
+  source = "./modules/s3-bucket"
 }
 
 module "lambda_function" {
