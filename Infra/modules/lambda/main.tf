@@ -4,9 +4,7 @@ resource "aws_lambda_function" "image_processing" {
   runtime       = "python3.8"
   role          = module.iam_roles.lambda_execution_role_arn
   timeout       = 60
-
-  s3_bucket     = var.bucket_name
-  s3_key        = "lambda_function.zip"  # Replace with your S3 path or upload directly via AWS Lambda Console
+  filename      = "./lambda_function/lambda_function.zip"
 
   environment {
     variables = {
