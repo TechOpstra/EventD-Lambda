@@ -22,6 +22,7 @@ resource "aws_cloudwatch_dashboard" "lambda_dashboard" {
   })
 }
 
+
 output "cloudwatch_dashboard_url" {
-  value = aws_cloudwatch_dashboard.lambda_dashboard.url
+  value = "https://console.aws.amazon.com/cloudwatch/home?region=${var.region}#dashboards:name=${aws_cloudwatch_dashboard.lambda_dashboard.dashboard_name}"
 }
