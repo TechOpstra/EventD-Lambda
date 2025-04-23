@@ -1,16 +1,17 @@
 resource "aws_lambda_function" "image_processing" {
   function_name = "ImageProcessingLambda"
-  handler       = "index.handler"
-  runtime       = "nodejs16.x"
+  handler       = "index.lambda_handler"
+  runtime       = "python3.8"
   role          = module.iam_roles.lambda_execution_role_arn
   timeout       = 60
+
   s3_bucket     = var.bucket_name
-  s3_key        = "lambda_function.zip"  # Specify the path to your Lambda function ZIP
+  s3_key        = "lambda_function.zip"  # Replace with your S3 path or upload directly via AWS Lambda Console
 
   environment {
     variables = {
-      UPLOAD_BUCKET     = var.bucket_name
-      PROCESSED_BUCKET  = module.s3_buckets.processed_bucket_name
+      UPLOAD_BUCKET    = var.bucket_name
+      PROCESSED_BUCKET = module.s3_buckets.processed_bucket_name
     }
   }
 
@@ -18,6 +19,7 @@ resource "aws_lambda_function" "image_processing" {
     mode = "Active"
   }
 }
+
 
 output "lambda_function_name" {
   value = aws_lambda_function.image_processing.function_name
