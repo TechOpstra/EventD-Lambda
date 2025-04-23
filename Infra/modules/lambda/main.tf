@@ -18,6 +18,14 @@ resource "aws_lambda_function" "image_processing" {
   }
 }
 
+resource "aws_lambda_permission" "allow_s3_invoke" {
+  statement_id  = "AllowExecutionFromS3"
+  action        = "lambda:InvokeFunction"
+  principal     = "s3.amazonaws.com"
+  function_name = aws_lambda_function.image_processing.function_name
+  source_arn    = aws_s3_bucket.upload_bucket.arn
+}
+
 
 output "lambda_function_name" {
   value = aws_lambda_function.image_processing.function_name
