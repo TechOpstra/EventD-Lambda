@@ -21,7 +21,7 @@ resource "aws_s3_bucket_notification" "upload_bucket_notification" {
       suffix = ".jpg"
     }
 
-    lambda_function_arn = module.lambda_function.lambda_function_arn
+    lambda_function_arn = var.lambda_function_arn 
   }
 }
 
