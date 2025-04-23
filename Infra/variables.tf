@@ -14,7 +14,3 @@ variable "processed_bucket_name" {
   type        = string
 }
 
-variable "lambda_function_name" {
-  description = "The name of the Lambda function"
-  type        = string
-}
